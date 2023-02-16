@@ -46,6 +46,7 @@ public class ObjectArrayEx07_풀이3 {
 		studentList[1].subjects[1].name = "학생1 과목1";
 		studentList[1].subjects[1].score = 100;
 		
+		
 		studentList[2] = new Student_풀이3();
 		studentList[2].name = "학생2";
 		studentList[2].subjects = new Subject_풀이3[1];
