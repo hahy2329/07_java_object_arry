@@ -31,6 +31,7 @@ public class ObjectArrayEx01 {
 		
 		productList[0] = product; 
 		
+		
 		//배열에 값 대입 방법 2
 		productList[1] = new Product(); 
 		productList[2] = new Product(); 
@@ -60,6 +61,7 @@ public class ObjectArrayEx01 {
 		
 		//1
 		Product[] temp1 = productList; // 주소
+		
 		//2
 		Product temp2 = productList[0]; // 주소
 		//3

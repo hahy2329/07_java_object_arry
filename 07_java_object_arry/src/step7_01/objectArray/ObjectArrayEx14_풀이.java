@@ -78,6 +78,31 @@ class StudentController_풀이{
 		return studentList.size();
 	}
 	
+	String outData() {
+		
+		String data = "";
+		int count = studentList.size();
+		if(count == 0) {
+			return data;
+		}
+		data +=count;
+		data +="\n";
+		for (int i = 0; i < studentList.size(); i++) {
+			data += studentList.get(i).id;
+			data +=",";
+			data += studentList.get(i).pw;
+			if(count -1 != i) {
+				data += "\n";
+			}
+		}
+		return data;
+		
+	}
+	
+	void loadStudent(ArrayList<StudentDTO_풀이> studentList) {
+		this.studentList = studentList;
+	}
+	
 	
 	
 }
@@ -156,10 +181,73 @@ public class ObjectArrayEx14_풀이 {
 				if(controller1.getSize() == 0) {
 					continue;
 				}
+				
+				else {
+					try {
+						fw = new FileWriter(fileName);
+						String data = controller1.outData();
+						
+						if(!data.equals("")) {
+							fw.write(data);
+						}
+					} catch (Exception e) {
+						
+						e.printStackTrace();
+					}finally {
+						try {fw.close();}catch(IOException e) { e.printStackTrace();}
+					}
+					
+				}
+			}
+			
+			else if(sel == 6) {
+				FileReader fr = null;
+				BufferedReader br = null;
+				
+				try {
+					File file = new File(fileName);
+					
+					if(file.exists()) {
+						fr = new FileReader(file);
+						br = new BufferedReader(fr);
+						ArrayList<StudentDTO_풀이> studentList = new ArrayList<StudentDTO_풀이>();
+						
+						
+						String line = br.readLine();
+						int count = Integer.parseInt(line);
+						
+						for(int i = 0; i<count; i++) {
+							StudentDTO_풀이 temp = new StudentDTO_풀이();
+							line = br.readLine();
+							String[] value = line.split(",");
+							temp.id = value[0];
+							temp.pw = value[1];
+							studentList.add(temp);
+							
+						}
+						controller1.loadStudent(studentList);
+					}
+					controller1.printStudent();
+					
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {br.close();}catch(IOException e) {e.printStackTrace();}
+					try {fr.close();}catch(IOException e) {e.printStackTrace();}
+				}
+				
+				
+			}
+			else if(sel == 7) {
+				System.out.println("종료");
+				break;
 			}
 					
 					
 		}
+		
+		scan.close();
 		
 		
 	

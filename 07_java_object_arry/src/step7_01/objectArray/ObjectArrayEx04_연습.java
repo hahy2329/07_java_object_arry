@@ -49,7 +49,7 @@ public class ObjectArrayEx04_연습 {
 				
 				System.out.println("인덱스를 입력하세요 ");
 				int index = scan.nextInt();
-				for (int i = index; i < usrCnt - 1; i++) {
+				for (int i = index; i < usrCnt; i++) {
 					userList[i] = userList[i + 1];
 				}
 				usrCnt--;
